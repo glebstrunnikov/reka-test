@@ -1,0 +1,49 @@
+<template>
+  <div class="card-wrapper">
+    <div class="card-stack">
+      <img
+        :src="`../src/assets/cards/${data.site}.svg`"
+        alt=""
+        class="card-logo"
+      />
+      <div class="card-description-wrapper">
+        {{ data.description }}
+      </div>
+      <CardBadge :site="data.site" :subscribed="data.subscribed" />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import CardBadge from "./CardBadge.vue";
+import { SiteData } from "../types";
+defineProps<{ data: SiteData }>();
+</script>
+
+<style scoped lang="sass">
+.card-wrapper
+    width: 318px
+    height: 327px
+    background-color: white
+    padding: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+
+.card-stack
+    display: flex
+    flex-direction: column
+    align-items: start
+    width: 270px
+    gap: 16px
+
+.card-logo
+    align-self: center
+    height: 168px
+    width: 100%
+
+.card-description-wrapper
+    height: 47px
+    overflow: hidden
+    text-overflow: ellipsis
+</style>
