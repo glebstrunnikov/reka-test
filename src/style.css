@@ -3,11 +3,12 @@ body {
   margin: 0;
   min-width: 100vw;
   min-height: 100vh;
-  font-family: "Rubik", sans-serif;
-}
+  font-family: "Rubik", sans-serif; }
 
 .text-gray {
-  color: rgb(102, 102, 102);
-}
+  color: #666666; }
+
+.body-no-scroll {
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */

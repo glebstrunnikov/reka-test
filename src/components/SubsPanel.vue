@@ -11,12 +11,9 @@
         </div>
         <div class="unsub-header-whitespace"></div>
         <div>
-          <button class="unsub-btn">Unsubscribe from all</button>
+          <button @click="store.toggleModal(true)" class="unsub-btn">Unsubscribe from all</button>
         </div>
-        <div
-          class="unsub-header-dummy"
-          :style="`width: ${rightDummyWidth}px`"
-        ></div>
+        <div class="unsub-header-dummy" :style="`width: ${rightDummyWidth}px`"></div>
       </div>
       <div ref="panelDiv" class="sub-cards-wrapper">
         <SubCard v-for="site in sites" :data="site" />
@@ -33,7 +30,6 @@ import { ref, onMounted, computed } from "vue";
 import { useSubsStore } from "../data/store";
 const store = useSubsStore();
 const sites: SiteData[] = store.sites;
-
 const panelDiv = ref<HTMLElement | null>(null);
 const rightDummyWidth = computed<number | undefined>(() => {
   if (!panelDiv.value?.offsetWidth) {
@@ -42,7 +38,7 @@ const rightDummyWidth = computed<number | undefined>(() => {
     return (panelDiv.value?.offsetWidth % 390) + 24;
   }
 });
-onMounted(() => {});
+
 </script>
 
 <style scoped lang="sass">
@@ -67,6 +63,7 @@ onMounted(() => {});
     font-size: 16px
     border: 1px solid rgba(204, 204, 204, 1)
     border-radius: 4px
+    cursor: pointer
 h3
     font-size: 24px
     font-weight: 400

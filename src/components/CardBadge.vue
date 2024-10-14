@@ -1,13 +1,9 @@
 <template>
-  <div @click="switchSub(site)" v-if="subscribed" class="background color-true">
+  <div @click="toggleSub(site)" v-if="subscribed" class="background color-true">
     <img src="../assets/svg/checkmark.svg" alt="" />
     <span class="text-true">Subscribed</span>
   </div>
-  <div
-    @click="switchSub(site)"
-    v-if="!subscribed"
-    class="background color-false"
-  >
+  <div @click="toggleSub(site)" v-if="!subscribed" class="background color-false">
     <span class="text-false">Subscribe</span>
   </div>
 </template>
@@ -15,8 +11,8 @@
 <script setup lang="ts">
 import { useSubsStore } from "../data/store";
 const store = useSubsStore();
-function switchSub(siteName: string) {
-  store.switch(siteName);
+function toggleSub(siteName: string) {
+  store.toggleSub(siteName);
 }
 defineProps<{ subscribed: boolean; site: string }>();
 </script>

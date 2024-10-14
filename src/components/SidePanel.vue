@@ -11,16 +11,13 @@
             <div class="scale-number-wrapper">
               <div class="scale-wrapper">
                 <div class="scale-total"></div>
-                <div
-                  class="scale-current"
-                  :style="`width: ${store.percent}%`"
-                ></div>
+                <div class="scale-current" :style="`width: ${store.percent}%`"></div>
               </div>
               <span class="text-gold">{{ store.percent }}%</span>
             </div>
           </div>
           <p class="text-small text-grey">
-            <a href="#">Subscribe</a> to all our fun sites to upgrade your fun
+            <a @click="store.toggleAllSubs(true)" href="#">Subscribe</a> to all our fun sites to upgrade your fun
             progress
           </p>
         </div>
@@ -31,10 +28,14 @@
         <p class="text-tiny">11807 Westheimer 550 PMB617</p>
         <p class="text-tiny">Houston, TX 77077</p>
         <div>
-          <a href="#"><p class="text-tiny">contact@entertainmemore.com</p></a>
+          <a href="#">
+            <p class="text-tiny">contact@entertainmemore.com</p>
+          </a>
         </div>
         <div>
-          <a href="#"><p class="text-tiny">Privace Policy</p></a>
+          <a href="#">
+            <p class="text-tiny">Privace Policy</p>
+          </a>
         </div>
       </div>
     </div>

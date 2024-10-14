@@ -1,11 +1,12 @@
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { SiteData } from "../types";
 import data from "./data.json";
 export const useSubsStore = defineStore("subs", {
   state: () => {
     const sites = reactive<SiteData[]>(data);
-    return { sites };
+    const modalOpen = ref<boolean>(false);
+    return { sites, modalOpen };
   },
   getters: {
     percent(): number {
@@ -21,13 +22,25 @@ export const useSubsStore = defineStore("subs", {
     },
   },
   actions: {
-    switch(site: string): any {
+    toggleSub(site: string): any {
       for (let i = 0; i < this.sites.length; i++) {
         if (this.sites[i].site === site) {
           this.sites[i].subscribed = !this.sites[i].subscribed;
         }
       }
-      console.log(this.sites);
+    },
+    toggleAllSubs(isOn: boolean) {
+      for (let i = 0; i < this.sites.length; i++) {
+        this.sites[i].subscribed = isOn;
+      }
+    },
+    toggleModal(isVisible: boolean) {
+      this.modalOpen = isVisible;
+      if (isVisible) {
+        document.body.classList.add("body-no-scroll");
+      } else {
+        document.body.classList.remove("body-no-scroll");
+      }
     },
   },
 });
