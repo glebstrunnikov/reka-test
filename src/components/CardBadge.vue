@@ -1,9 +1,17 @@
 <template>
-  <div @click="toggleSub(site)" v-if="subscribed" class="background color-true">
+  <div
+    @click="toggleSub(site)"
+    v-if="subscribed"
+    class="background background-true"
+  >
     <img src="../assets/svg/checkmark.svg" alt="" />
     <span class="text-true">Subscribed</span>
   </div>
-  <div @click="toggleSub(site)" v-if="!subscribed" class="background color-false">
+  <div
+    @click="toggleSub(site)"
+    v-if="!subscribed"
+    class="background background-false"
+  >
     <span class="text-false">Subscribe</span>
   </div>
 </template>
@@ -23,11 +31,13 @@ defineProps<{ subscribed: boolean; site: string }>();
     display: flex
     flex-direction: row
     align-items: center
-    padding: 4px
-.color-true
+    height: 32px
+.background-true
     background-color: rgb(237, 242, 255)
-.color-false
+    padding-right: 12px
+.background-false
     background-color: rgb(52, 109, 242)
+    padding-inline:  12px
 .text-true
     color: rgb(52, 109, 242)
 .text-false

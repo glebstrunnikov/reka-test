@@ -22,8 +22,8 @@ defineProps<{ data: SiteData }>();
 
 <style scoped lang="sass">
 .card-wrapper
-    width: 318px
-    height: 327px
+    width: 270px
+    height: 279px
     background-color: white
     padding: 24px
     display: flex

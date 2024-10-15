@@ -1,42 +1,62 @@
 <template>
-  <div class="side-panel-wrapper">
-    <div class="side-panel">
-      <div class="side-panel-top">
-        <img src="../assets/svg/main-logo.svg" alt="" />
-        <p class="text-medium">How much fun do you want in your life?</p>
-        <div class="fun-wrapper">
-          <p class="text-small">harry.simon@yahoo.com</p>
-          <div>
-            <p class="text-tiny text-gray">FUN YOU GET</p>
-            <div class="scale-number-wrapper">
-              <div class="scale-wrapper">
-                <div class="scale-total"></div>
-                <div class="scale-current" :style="`width: ${store.percent}%`"></div>
-              </div>
-              <span class="text-gold">{{ store.percent }}%</span>
+  <div class="side-panel">
+    <div class="side-panel-top">
+      <img src="../assets/svg/main-logo.svg" alt="" />
+      <p class="text-medium">How much fun do you want in your life?</p>
+      <div class="fun-wrapper">
+        <p class="text-small">harry.simon@yahoo.com</p>
+        <div>
+          <p class="text-tiny text-gray">FUN YOU GET</p>
+          <div class="scale-number-wrapper">
+            <div class="scale-wrapper">
+              <div class="scale-total"></div>
+              <div
+                :class="scaleClass"
+                :style="`width: ${store.percent}%`"
+              ></div>
             </div>
+            <span class="text-gold">{{ store.percent }}%</span>
           </div>
-          <p class="text-small text-grey">
-            <a @click="store.toggleAllSubs(true)" href="#">Subscribe</a> to all our fun sites to upgrade your fun
-            progress
-          </p>
         </div>
+        <p class="text-small text-grey">
+          <a @click="store.toggleAllSubs(true)" href="#">Subscribe</a> to all
+          our fun sites to upgrade your fun progress
+        </p>
       </div>
-      <div class="side-panel-bottom">
-        <div></div>
-        <p class="text-tiny">EntertainMeMore</p>
-        <p class="text-tiny">11807 Westheimer 550 PMB617</p>
-        <p class="text-tiny">Houston, TX 77077</p>
-        <div>
-          <a href="#">
-            <p class="text-tiny">contact@entertainmemore.com</p>
-          </a>
+    </div>
+    <div class="side-panel-bottom">
+      <div></div>
+      <p class="text-tiny">EntertainMeMore</p>
+      <p class="text-tiny">11807 Westheimer 550 PMB617</p>
+      <p class="text-tiny">Houston, TX 77077</p>
+      <div>
+        <a href="#">
+          <p class="text-tiny">contact@entertainmemore.com</p>
+        </a>
+      </div>
+      <div>
+        <a href="#">
+          <p class="text-tiny">Privace Policy</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="top-panel">
+    <div class="top-wrapper">
+      <img class="logo-mobile" src="../assets/svg/main-logo.svg" alt="" />
+      <div>
+        <p class="text-tiny text-gray">FUN YOU GET</p>
+        <div class="scale-number-wrapper">
+          <div class="scale-wrapper">
+            <div class="scale-total"></div>
+            <div :class="scaleClass" :style="`width: ${store.percent}%`"></div>
+          </div>
+          <span class="text-gold">{{ store.percent }}%</span>
         </div>
-        <div>
-          <a href="#">
-            <p class="text-tiny">Privace Policy</p>
-          </a>
-        </div>
+        <p class="text-small text-grey">
+          <a @click="store.toggleAllSubs(true)" href="#">Subscribe</a> to all
+          our fun sites to upgrade your fun progress
+        </p>
       </div>
     </div>
   </div>
@@ -44,6 +64,14 @@
 
 <script setup lang="ts">
 import { useSubsStore } from "../data/store";
+import { computed } from "vue";
+const scaleClass = computed<string>(() => {
+  if (store.percent < 95) {
+    return "scale-current scale-edge-straight";
+  } else {
+    return "scale-current scale-edge-rounded";
+  }
+});
 const store = useSubsStore();
 </script>
 
@@ -60,6 +88,9 @@ const store = useSubsStore();
     justify-content: space-between
     align-items: start
     padding: 48px
+    @media only screen and (max-width: 1238px)
+        display: none
+
 
 .side-panel-top > *
     margin-top: 64px
@@ -112,5 +143,23 @@ p.text-small a
     z-index:2
     background-color: rgb(248, 179, 0)
     position: absolute
+.scale-edge-straight
     border-radius: 8px 0 0 8px
+.scale-edge-rounded
+    border-radius: 8px
+
+
+.top-panel
+    height: 120px
+    width: 100vw
+    background-color: white
+.top-wrapper
+    height: calc(100% - 40px)
+    width: calc(100% - 60px)
+    padding: 20px 30px
+    display: flex
+    justify-content: space-between
+    align-items: center
+.logo-mobile
+    max-height: 100%
 </style>

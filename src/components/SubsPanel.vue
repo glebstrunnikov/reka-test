@@ -11,9 +11,12 @@
         </div>
         <div class="unsub-header-whitespace"></div>
         <div>
-          <button @click="store.toggleModal(true)" class="unsub-btn">Unsubscribe from all</button>
+          <button class="unsub-btn">Unsubscribe from all</button>
         </div>
-        <div class="unsub-header-dummy" :style="`width: ${rightDummyWidth}px`"></div>
+        <div
+          class="unsub-header-dummy"
+          :style="`width: ${rightDummyWidth}px`"
+        ></div>
       </div>
       <div ref="panelDiv" class="sub-cards-wrapper">
         <SubCard v-for="site in sites" :data="site" />
@@ -24,9 +27,8 @@
 
 <script setup lang="ts">
 import SubCard from "./SubCard.vue";
-// import data from "../data/data.json";
 import { SiteData } from "../types";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 import { useSubsStore } from "../data/store";
 const store = useSubsStore();
 const sites: SiteData[] = store.sites;
@@ -35,35 +37,35 @@ const rightDummyWidth = computed<number | undefined>(() => {
   if (!panelDiv.value?.offsetWidth) {
     return 0;
   } else {
-    return (panelDiv.value?.offsetWidth % 390) + 24;
+    return (panelDiv.value?.offsetWidth % 342) + 24;
   }
 });
-
 </script>
 
 <style scoped lang="sass">
 .main-wrapper
     display: flex
     flex-direction: row
-
-
+    background-color: rgb(241, 241, 241)
+    // padding: 128px
 .side-dummy
     position: relative
     min-width: 320px
     height: 100%
     background-color: blue
+    @media only screen and (max-width: 1238px)
+        display: none
 .subs-panel-main
-    background-color: rgb(241, 241, 241)
     width: 100%
     height: 100%
-    min-height: calc(100vh - 256px)
-    padding: 128px
+    margin: 128px
+    @media only screen and (max-width: 1238px)
+        margin: 0
 .unsub-btn
     color: rgba(52, 109, 241, 1)
     font-size: 16px
     border: 1px solid rgba(204, 204, 204, 1)
     border-radius: 4px
-    cursor: pointer
 h3
     font-size: 24px
     font-weight: 400

@@ -1,31 +1,35 @@
 <template>
-    <div @click="closeModal" class="modal-background">
-        <div class="modal-window modal-body">
-            <div class="modal-header-wrapper modal-body">
-                <div class="modal-header modal-body">Are you sure?</div>
-                <div @click="store.toggleModal(false)" class="modal-close-btn"><img src="../assets/svg/cross.svg"
-                        alt=""></div>
-            </div>
-            <div class="modal-text modal-body">Please confirm that you want to unsubscribe from all and lose
-                {{ store.percent }}% fun.
-            </div>
-            <button @click="unsubscribe" class="modal-confirm-btn modal-body">Affirmative</button>
+  <div @click="closeModal" class="modal-background">
+    <div class="modal-window modal-body">
+      <div class="modal-header-wrapper modal-body">
+        <div class="modal-header modal-body">Are you sure?</div>
+        <div @click="store.toggleModal(false)" class="modal-close-btn">
+          <img src="../assets/svg/cross.svg" alt="" />
         </div>
+      </div>
+      <div class="modal-text modal-body">
+        Please confirm that you want to unsubscribe from all and lose
+        {{ store.percent }}% fun.
+      </div>
+      <button @click="unsubscribe" class="modal-confirm-btn modal-body">
+        Affirmative
+      </button>
     </div>
-
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useSubsStore } from '../data/store.ts'
-const store = useSubsStore()
-function closeModal(event: event) {
-    if (!event.target.classList.contains('modal-body')) {
-        store.toggleModal(false)
-    }
+import { useSubsStore } from "../data/store.ts";
+const store = useSubsStore();
+function closeModal(event: Event) {
+  const target = <HTMLElement>event.target;
+  if (target && !target.classList.contains("modal-body")) {
+    store.toggleModal(false);
+  }
 }
 function unsubscribe() {
-    store.toggleAllSubs(false)
-    store.toggleModal(false)
+  store.toggleAllSubs(false);
+  store.toggleModal(false);
 }
 </script>
 
