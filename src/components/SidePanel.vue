@@ -78,6 +78,7 @@ const store = useSubsStore();
 </script>
 
 <style scoped lang="sass">
+@import '../variables'
 .side-panel
     position: fixed
     height: calc(100vh - 96px)
@@ -90,7 +91,7 @@ const store = useSubsStore();
     justify-content: space-between
     align-items: start
     padding: 48px
-    @media only screen and (max-width: 1238px)
+    @media only screen and (max-width: $breakpointMedium)
         display: none
 
 
@@ -133,7 +134,7 @@ p.text-small a
     width: 176px
     height: 16px
     position: relative
-    @media only screen and (max-width: 1238px)
+    @media only screen and (max-width: $breakpointMedium)
         width: 80%
 .scale-total
     height: 100%
@@ -157,6 +158,9 @@ p.text-small a
     // height: 120px
     width: 100vw
     background-color: white
+    @media only screen and (min-width: $breakpointMedium)
+        display: none
+
 .top-wrapper
     height: calc(100% - 40px)
     width: calc(100% - 60px)
@@ -165,6 +169,8 @@ p.text-small a
     flex-wrap: wrap
     justify-content: space-between
     align-items: center
+    // @media only screen and (max-width: $breakpointSmall)
+
 .logo-mobile
     max-height: 100%
 img.logo-mobile

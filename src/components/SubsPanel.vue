@@ -34,33 +34,34 @@ const store = useSubsStore();
 const sites: SiteData[] = store.sites;
 const panelDiv = ref<HTMLElement | null>(null);
 const rightDummyWidth = computed<number | undefined>(() => {
-  if (!panelDiv.value?.offsetWidth) {
+  if (!panelDiv.value?.offsetWidth || panelDiv.value?.offsetWidth <= 708) {
     return 0;
   } else {
-    return (panelDiv.value?.offsetWidth % 342) + 24;
+    return (panelDiv.value?.offsetWidth + 24) % 342;
   }
 });
 </script>
 
 <style scoped lang="sass">
+@import '../variables'
 .main-wrapper
     display: flex
     flex-direction: row
     background-color: rgb(241, 241, 241)
-    // padding: 128px
 .side-dummy
     position: relative
     min-width: 320px
     height: 100%
     background-color: blue
-    @media only screen and (max-width: 1238px)
+    @media only screen and (max-width: $breakpointMedium)
         display: none
 .subs-panel-main
     width: 100%
     height: 100%
-    margin: 128px
-    @media only screen and (max-width: 1238px)
+    margin: 108px
+    @media only screen and (max-width: $breakpointMedium)
         margin: 0
+
 .unsub-btn
     color: rgba(52, 109, 241, 1)
     font-size: 16px
@@ -75,6 +76,10 @@ h3
     flex-direction: row
     align-items: start
     justify-content: space-between
+    margin: 20px
+    @media only screen and (max-width: $breakpointSmall)
+        flex-direction: column
+        align-items: center
 
 .unsub-header-whitespace
     flex: 999
@@ -84,4 +89,8 @@ h3
     flex-direction: row
     flex-wrap: wrap
     gap: 24px
+    margin: 20px
+    @media only screen and (max-width: $breakpointSmall)
+        flex-direction: column
+        align-items: center
 </style>
