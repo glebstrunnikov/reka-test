@@ -11,7 +11,9 @@
         </div>
         <div class="unsub-header-whitespace"></div>
         <div>
-          <button class="unsub-btn">Unsubscribe from all</button>
+          <button @click="store.toggleModal(true)" class="unsub-btn">
+            Unsubscribe from all
+          </button>
         </div>
         <div
           class="unsub-header-dummy"
