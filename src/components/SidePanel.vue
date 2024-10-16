@@ -43,7 +43,9 @@
   </div>
   <div class="top-panel">
     <div class="top-wrapper">
-      <img class="logo-mobile" src="../assets/svg/main-logo.svg" alt="" />
+      <div class="logo-mobile">
+        <img class="logo-mobile" src="../assets/svg/main-logo.svg" alt="" />
+      </div>
       <div>
         <p class="text-tiny text-gray">FUN YOU GET</p>
         <div class="scale-number-wrapper">
@@ -131,6 +133,8 @@ p.text-small a
     width: 176px
     height: 16px
     position: relative
+    @media only screen and (max-width: 1238px)
+        width: 80%
 .scale-total
     height: 100%
     width: 100%
@@ -150,7 +154,7 @@ p.text-small a
 
 
 .top-panel
-    height: 120px
+    // height: 120px
     width: 100vw
     background-color: white
 .top-wrapper
@@ -158,8 +162,12 @@ p.text-small a
     width: calc(100% - 60px)
     padding: 20px 30px
     display: flex
+    flex-wrap: wrap
     justify-content: space-between
     align-items: center
 .logo-mobile
+    max-height: 100%
+img.logo-mobile
+    max-width: 100%
     max-height: 100%
 </style>
