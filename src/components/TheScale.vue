@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { useSubsStore } from "../data/store";
 import { computed } from "vue";
+// Код ниже - чтобы при числе процентов, близком к 100, углы не торчали из правого края шкалы
 const scaleClass = computed<string>(() => {
   if (store.percent < 95) {
     return "scale-current scale-edge-straight";
