@@ -16,19 +16,22 @@
 
 <script setup lang="ts">
 import CardBadge from "./CardBadge.vue";
-import { SiteData } from "../types";
-import { ref, onMounted, computed } from "vue";
+import { SiteData } from "../data/types";
+import { ref, onMounted } from "vue";
 const textElement = ref<HTMLElement | null>(null);
 defineProps<{ data: SiteData }>();
+// Из макета (вторая карточка) понятно, что текст должен обрезаться с заменой на многоточие, если он не влезает по высоте. Я добавил такое js-решение, так как оно, насколько я понимаю, более универсально, так как text-overflow: ellipsis не работает на многострочных текстах без line-clamp, который недоступен в не-webkit браузерах.
 onMounted(() => {
-  if (textElement.value?.scrollHeight && textElement.value.textContent) {
-    while (textElement.value?.scrollHeight > 48) {
-      textElement.value.textContent = textElement.value?.textContent?.replace(
-        /.{4}$/,
-        "..."
-      );
+  document.fonts.ready.then(() => {
+    if (textElement.value?.scrollHeight && textElement.value.textContent) {
+      while (textElement.value.scrollHeight > 48) {
+        textElement.value.textContent = textElement.value.textContent.replace(
+          /.{4}$/,
+          "..."
+        );
+      }
     }
-  }
+  });
 });
 </script>
 
@@ -41,22 +44,18 @@ onMounted(() => {
     display: flex
     align-items: center
     justify-content: center
-
 .card-stack
     display: flex
     flex-direction: column
     align-items: start
     width: 270px
     gap: 16px
-
 .card-logo
     align-self: center
     height: 168px
     width: 100%
-
 .card-description-wrapper
-    height: 47px
+    min-height: 47px
     line-height: 24px
     overflow: hidden
-    text-overflow: ellipsis
 </style>

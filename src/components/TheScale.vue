@@ -32,16 +32,7 @@ const store = useSubsStore();
 </script>
 
 <style scoped lang="sass">
-@import '../variables'
-.text-tiny
-    font-size: 12px
-    line-height: 18px
-    margin: 0px
-
-
-a > p.text-tiny
-    text-decoration: underline
-    color: rgba(102, 102, 102, 1)
+@import '../styles/variables'
 
 .scale-number-wrapper
     display: flex

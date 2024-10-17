@@ -22,6 +22,7 @@
       </div>
     </div>
   </div>
+  <!-- Все, что выше, показывается при размере экрана больше брейкпойнта $breakpointMedium, ниже - меньше -->
   <div class="top-panel">
     <div class="top-wrapper">
       <div class="logo-mobile">
@@ -37,18 +38,8 @@ import TheScale from "./TheScale.vue";
 </script>
 
 <style scoped lang="sass">
-@import '../variables'
-
-.text-medium
-    font-size: 20px
-.text-tiny
-    font-size: 12px
-    line-height: 18px
-    margin: 0px
-a > p.text-tiny
-    text-decoration: underline
-    color: rgba(102, 102, 102, 1)
-
+@import '../styles/variables'
+// Стили, относящиеся к боковой панели:
 .side-panel
     position: fixed
     height: calc(100vh - 96px)
@@ -69,8 +60,8 @@ a > p.text-tiny
 .side-panel-bottom > div
     margin-top: 24px
 
+// Стили, относящиеся к верхней панели:
 .top-panel
-    // height: 120px
     width: 100vw
     background-color: white
     @media only screen and (min-width: $breakpointMedium)

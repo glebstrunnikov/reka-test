@@ -26,6 +26,8 @@ defineProps<{ subscribed: boolean; site: string }>();
 </script>
 
 <style scoped lang="sass">
+*
+    cursor: pointer
 .background
     border-radius: 16px
     display: flex

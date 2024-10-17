@@ -42,7 +42,6 @@ function unsubscribe() {
     width: 100vw
     z-index: 2
     backdrop-filter: blur(3px)
-    // background-color: rgba(0, 0, 0, 0.2)
     background-color: rgba(109,119,159,0.5)
     display: flex
     justify-content: center

@@ -29,11 +29,12 @@
 
 <script setup lang="ts">
 import SubCard from "./SubCard.vue";
-import { SiteData } from "../types";
+import { SiteData } from "../data/types";
 import { ref, computed } from "vue";
 import { useSubsStore } from "../data/store";
 const store = useSubsStore();
 const sites: SiteData[] = store.sites;
+// Код ниже нужен, чтобы кнопочка Unsubscribe from all корректно выравнивалась по правому краю последней карточки в ряду на любом разрешении экрана и, соответственно, количестве карточек в одном горизонтальном ряду. 342 - это ширина карточки (318) плюс промежуток между ними (24) согласно макету.
 const panelDiv = ref<HTMLElement | null>(null);
 const rightDummyWidth = computed<number | undefined>(() => {
   if (!panelDiv.value?.offsetWidth || panelDiv.value?.offsetWidth <= 708) {
@@ -45,7 +46,7 @@ const rightDummyWidth = computed<number | undefined>(() => {
 </script>
 
 <style scoped lang="sass">
-@import '../variables'
+@import '../styles/variables'
 .main-wrapper
     display: flex
     flex-direction: row
@@ -63,12 +64,12 @@ const rightDummyWidth = computed<number | undefined>(() => {
     margin: 108px
     @media only screen and (max-width: $breakpointMedium)
         margin: 0
-
 .unsub-btn
     color: rgba(52, 109, 241, 1)
     font-size: 16px
     border: 1px solid rgba(204, 204, 204, 1)
     border-radius: 4px
+    cursor: pointer
 h3
     font-size: 24px
     font-weight: 400
@@ -82,10 +83,8 @@ h3
     @media only screen and (max-width: $breakpointSmall)
         flex-direction: column
         align-items: center
-
 .unsub-header-whitespace
     flex: 999
-
 .sub-cards-wrapper
     display: flex
     flex-direction: row

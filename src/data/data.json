@@ -2,12 +2,12 @@
   {
     "site": "trainyrbrain",
     "description": "Test your world geography skills",
-    "subscribed": false
+    "subscribed": true
   },
   {
     "site": "ynquiz",
     "description": "Test your knowledge with our fun and challenging quiz game! Compet blah blah blah text",
-    "subscribed": false
+    "subscribed": true
   },
   {
     "site": "finditquiz",
@@ -17,7 +17,7 @@
   {
     "site": "moviequizonline",
     "description": "Identify films from iconic scenes",
-    "subscribed": false
+    "subscribed": true
   },
   {
     "site": "findsuperstar",
@@ -32,6 +32,6 @@
   {
     "site": "onemorequiz",
     "description": "Prove your science smarts",
-    "subscribed": false
+    "subscribed": true
   }
 ]

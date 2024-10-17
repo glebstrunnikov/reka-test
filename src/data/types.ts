@@ -1,5 +1,5 @@
 export interface SiteData {
   site: string;
-  description: string;
+  description?: string;
   subscribed: boolean;
 }
