@@ -1,11 +1,7 @@
 <template>
   <div class="card-wrapper">
     <div class="card-stack">
-      <img
-        :src="`../src/assets/cards/${data.site}.svg`"
-        alt=""
-        class="card-logo"
-      />
+      <img :src="`../assets/cards/${data.site}.svg`" alt="" class="card-logo" />
       <div ref="textElement" class="card-description-wrapper">
         {{ data.description }}
       </div>
