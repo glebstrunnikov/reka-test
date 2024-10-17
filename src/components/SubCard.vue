@@ -1,7 +1,7 @@
 <template>
   <div class="card-wrapper">
     <div class="card-stack">
-      <img :src="`../assets/cards/${data.site}.svg`" alt="" class="card-logo" />
+      <img :src="siteDataUrl(data.site)" alt="" class="card-logo" />
       <div ref="textElement" class="card-description-wrapper">
         {{ data.description }}
       </div>
@@ -19,6 +19,9 @@ import { SiteData } from "../data/types";
 import { ref, onMounted } from "vue";
 const textElement = ref<HTMLElement | null>(null);
 defineProps<{ data: SiteData }>();
+function siteDataUrl(site: string) {
+  return new URL(`../assets/cards/${site}.svg`, import.meta.url).href;
+}
 // Из макета (вторая карточка) понятно, что текст должен обрезаться с заменой на многоточие, если он не влезает по высоте. Я добавил такое js-решение, так как оно, насколько я понимаю, более универсально, так как text-overflow: ellipsis не работает на многострочных текстах без line-clamp, который недоступен в не-webkit браузерах.
 onMounted(() => {
   document.fonts.ready.then(() => {
