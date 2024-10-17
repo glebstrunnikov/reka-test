@@ -1,37 +1,30 @@
 [
   {
     "site": "trainyrbrain",
-    "description": "Test your world geography skills",
-    "subscribed": true
+    "description": "Test your world geography skills"
   },
   {
     "site": "ynquiz",
-    "description": "Test your knowledge with our fun and challenging quiz game! Compet blah blah blah text",
-    "subscribed": true
+    "description": "Test your knowledge with our fun and challenging quiz game! Compet blah blah blah text"
   },
   {
     "site": "finditquiz",
-    "description": "Guess the song from short clips",
-    "subscribed": false
+    "description": "Guess the song from short clips"
   },
   {
     "site": "moviequizonline",
-    "description": "Identify films from iconic scenes",
-    "subscribed": true
+    "description": "Identify films from iconic scenes"
   },
   {
     "site": "findsuperstar",
-    "description": "Challenge your historical knowledge",
-    "subscribed": false
+    "description": "Challenge your historical knowledge"
   },
   {
     "site": "whatcountry",
-    "description": "Answer questions on various sports",
-    "subscribed": false
+    "description": "Answer questions on various sports"
   },
   {
     "site": "onemorequiz",
-    "description": "Prove your science smarts",
-    "subscribed": true
+    "description": "Prove your science smarts"
   }
 ]

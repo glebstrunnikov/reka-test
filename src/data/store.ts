@@ -2,18 +2,31 @@ import { defineStore } from "pinia";
 import { reactive, ref } from "vue";
 import { SiteData } from "./types";
 import data from "./data.json";
+import subscribtions from "./subscribe.json";
 
 function printNoDescriptions(siteArr: SiteData[]): void {
   const result = siteArr;
   for (let i: number = 0; i < result.length; i++) {
     delete result[i].description;
   }
-  console.log(JSON.stringify(result));
+  //   Parse+stringify, чтобы в консоль выводился обычный объект, а не Proxy
+  console.log(JSON.parse(JSON.stringify(result)));
 }
 
 export const useSubsStore = defineStore("subs", {
   state: () => {
+    const userSubs = <SiteData[]>subscribtions;
     const sites = reactive<SiteData[]>(data);
+    userSubs.forEach((sub) => {
+      for (let i in data) {
+        if (sub.subscribed) {
+          sites[i].subscribed = true;
+        } else {
+          sites[i].subscribed = false;
+        }
+      }
+    });
+
     const modalOpen = ref<boolean>(false);
     return { sites, modalOpen };
   },
