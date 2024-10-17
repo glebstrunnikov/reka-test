@@ -9,7 +9,10 @@
       <div ref="textElement" class="card-description-wrapper">
         {{ data.description }}
       </div>
-      <CardBadge :site="data.site" :subscribed="data.subscribed" />
+      <CardBadge
+        :site="data.site"
+        :subscribed="data.subscribed ? data.subscribed : false"
+      />
     </div>
   </div>
 </template>
