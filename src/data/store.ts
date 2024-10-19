@@ -17,13 +17,13 @@ export const useSubsStore = defineStore("subs", {
   state: () => {
     const userSubs = <SiteData[]>subscribtions;
     const sites = reactive<SiteData[]>(data);
-    userSubs.forEach((sub) => {
-      for (let i in data) {
-        if (sub.subscribed) {
-          sites[i].subscribed = true;
-        } else {
-          sites[i].subscribed = false;
-        }
+
+    sites.forEach((site) => {
+      const matchingSub = userSubs.find((sub) => sub.site === site.site);
+      if (matchingSub) {
+        site.subscribed = matchingSub.subscribed;
+      } else {
+        site.subscribed = false;
       }
     });
 
